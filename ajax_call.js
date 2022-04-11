@@ -2,6 +2,11 @@ function reloadEvent() {
 	$('.linkBerita').on('click', function () {
 		convertURL(this.hash);		
 	});
+
+	$('#formBaru').on('submit', function(e){
+		e.preventDefault();
+		sendDataPost(this.action);
+	});
 }
 
 function loadKonten(link) {
@@ -27,8 +32,10 @@ function convertURL(hash) {
 
 	if (hashClean == 'home') {
 		url = 'http://localhost/backend_sederhana/index.php/berita';
+	} else if (hashClean == 'form_input') {
+		url = 'http://localhost/backend_sederhana/index.php/Berita/form_input';
 	} else {
-		url = 'http://localhost/backend_sederhana/index.php/berita/detail_berita?id='+hashClean;
+		url = 'http://localhost/backend_sederhana/index.php/berita/detail_berita?id=' + hashClean;
 	}
 
 	loadKonten(url);
